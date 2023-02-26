@@ -4,7 +4,7 @@
 
 module mux8x1_tb;
 
-    reg sel0, sel1, sel2;
+    reg sel0, sel1, sel2, enable;
     reg [3:0] a;
     reg [3:0] b;
     reg [3:0] c;
@@ -16,7 +16,7 @@ module mux8x1_tb;
     wire [3:0] out;
 
 
-    mux_8x1_4bit uut(a, b, c, d, e, f, g, h, sel0, sel1, sel2, out);
+    mux_8x1_4bit uut(a, b, c, d, e, f, g, h, sel0, sel1, sel2, enable, out);
 
 
     initial begin
@@ -25,7 +25,7 @@ module mux8x1_tb;
         $dumpvars(0, mux8x1_tb);
 
         // DECLARACION DE LOS VALORES QUE TENDRA CADA SALIDA
-        a = 4'd0; b = 4'd15; c = 4'd2; d = 4'd3; e = 4'd12; f = 4'd5; g = 4'd10; h = 4'd7; 
+        a = 4'd0; b = 4'd1; c = 4'd2; d = 4'd3; e = 4'd4; f = 4'd5; g = 4'd6; h = 4'd7; enable = 1; 
 
 
         // ASIGNACION DE TODOS LOS ESTADOS DE SEL PARA TENER UNA PRUEBA COMPLETA, ESTANDO DURA 20ns

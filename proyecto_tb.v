@@ -6,7 +6,7 @@
 module proyecto_tb;
 
     
-    reg sel0, sel1, sel2;
+    reg sel0, sel1, sel2, enable;
     reg [3:0] a;
     reg [3:0] b;
     reg cin;
@@ -14,7 +14,7 @@ module proyecto_tb;
     wire [3:0] out;
 
 
-    ALU uut(a, b, cin, sel0, sel1, sel2, out, cout);
+    ALU uut(a, b, cin, sel0, sel1, sel2, out, cout, enable);
 
 
     initial begin
@@ -23,7 +23,7 @@ module proyecto_tb;
         $dumpvars(0, proyecto_tb);
 
         // DECLARACION DE LOS VALORES QUE TENDRA CADA SALIDA
-        a = 4'd8; b = 4'd12; cin =1;
+        a = 4'd12; b = 4'd5; cin =0; enable = 1;
         
 
 

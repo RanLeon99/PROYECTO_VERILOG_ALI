@@ -18,20 +18,24 @@
     1 - 1 - 0 =  CONECTADAS A TIERRA
     1 - 1 - 1 = CONECTADAS A TIERRA
 
+
+    TIENE UN ENABLE, SI ESTA EN 0 ESTA ENCENIDO, PERO SI ES 1 NO SIRVE LA SALIDA SIEMPRE SERA 0
+
 */
 
 
-module ALU (a, b, cin, sel0, sel1, sel2, out, cout);
+module ALU (a, b, cin, sel0, sel1, sel2, out, cout, enable);
 
 
-    // SE CREAN 6 ENTRADAS
+    // SE CREAN 7 ENTRADAS
     // TRES SON DE SELECCION, QUE SON DE UN BIT
     // UN ACARREO DE ENTRADA, QUE ES DE UN BIT
     // DOS ENTRADAS, QUE SON DE 4 BIT'S
+    // UN ENABLE, QUE ES DE UN BIT
     input [3:0] a;
     input [3:0] b;
     input cin;
-    input sel0, sel1, sel2;
+    input sel0, sel1, sel2, enable;
 
     // SALIDA DEL MUX, QUE ES DE 4 BIT'S
     //SALIDA DEL ACARREO DE SALIDA
@@ -55,6 +59,7 @@ module ALU (a, b, cin, sel0, sel1, sel2, out, cout);
 
 
     // SE CREA EL SUMADOR COMPLETO DE LOS 4 BIT, LLAMANDO AL SUMADOR DE UN BIT
+    // INSTANCIACION POR DESPCION POSICIONAL
     adder adder_bit0 ( (a[0]), (b[0]), (cin), (s_out[0]), (cin1) );
     adder adder_bit1 ( (a[1]), (b[1]), (cin1), (s_out[1]), (cin2) );
     adder adder_bit2 ( (a[2]), (b[2]), (cin2), (s_out[2]), (cin3) );
@@ -74,9 +79,10 @@ module ALU (a, b, cin, sel0, sel1, sel2, out, cout);
     assign nor_out = ~(a|b);
 
 
-    // SE LE COLOCA LOS RESULTADOS DE LAS DIFERENTES OPERACIONES A LAS ENTRADAS DEL MUX
+    // SE LE COLOCA LOS RESULTADOS DE LAS DIFERENTES OPERACIONES A LAS ENTRADAS DEL MUX 
+    // INSTANCIACION POR DESPCION POSICIONAL
 
-    mux_8x1_4bit mux(s_out, and_out, or_out, nand_out, nor_out, salida_5, salida_6, salida_7, sel0, sel1, sel2, out);
+    mux_8x1_4bit mux(s_out, and_out, or_out, nand_out, nor_out, salida_5, salida_6, salida_7, sel0, sel1, sel2, enable, out);
 
 endmodule
 
