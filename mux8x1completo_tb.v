@@ -25,7 +25,7 @@ module mux8x1_tb;
         $dumpvars(0, mux8x1_tb);
 
         // DECLARACION DE LOS VALORES QUE TENDRA CADA SALIDA
-        a = 4'd0; b = 4'd1; c = 4'd2; d = 4'd3; e = 4'd4; f = 4'd5; g = 4'd6; h = 4'd7; enable = 1; 
+        a = 4'd15; b = 4'd1; c = 4'd2; d = 4'd15; e = 4'd4; f = 4'd5; g = 4'd15; h = 4'd7; enable = 1; 
 
 
         // ASIGNACION DE TODOS LOS ESTADOS DE SEL PARA TENER UNA PRUEBA COMPLETA, ESTANDO DURA 20ns
